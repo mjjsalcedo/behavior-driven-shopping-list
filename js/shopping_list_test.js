@@ -5,10 +5,10 @@ var should = chai.should();
 
 describe('Shopping List Item Class', function(){
 
-  var item = null;
+  var list = null;
 
   beforeEach(function(){
-    item =  new ShoppingListItem("bread", "wheat");
+    list =  new ShoppingListItem("bread", "wheat");
 
   });
 
@@ -17,45 +17,45 @@ describe('Shopping List Item Class', function(){
   });
 
   it('should have a property called "name"', function(){
-    expect(item).to.have.a.property('name');
-    expect(item.name).to.be.a('String');
+    expect(list).to.have.a.property('name');
+    expect(list.name).to.be.a('String');
   });
 
   it('should have a property called "description"', function(){
-    expect(item).to.have.a.property('description');
-    expect(item.description).to.be.a('String');
+    expect(list).to.have.a.property('description');
+    expect(list.description).to.be.a('String');
   });
 
   it('should have a property "is_done"', function(){
-    expect(item).to.have.a.property('is_done');
-    expect(item.is_done).to.equal(false);
+    expect(list).to.have.a.property('is_done');
+    expect(list.is_done).to.equal(false);
   });
 
   describe('.check', function(){
   it('should be a method', function(){
-     expect(item.check).to.be.a('function');
+     expect(list.check).to.be.a('function');
   });
 
   it('should equal true', function(){
-    expect(item.check()).to.equal(true);
+    expect(list.check()).to.equal(true);
   });
 
 });
 
 describe('.uncheck', function(){
   it('should be a method', function(){
-     expect(item.uncheck).to.be.a('function');
+     expect(list.uncheck).to.be.a('function');
   });
   it('should equal false', function(){
-    expect(item.uncheck()).to.equal(false);
+    expect(list.uncheck()).to.equal(false);
   });
 });
 
 describe('.render', function(){
   it('should be a method', function(){
 
-    var item = new ShoppingListItem("bread", "wheat");
-    expect(item.render()).to.equal(false);
+    var list = new ShoppingListItem("bread", "wheat");
+    expect(list.render()).to.equal(false);
   });
 });
 
@@ -64,10 +64,10 @@ describe('.render', function(){
 
 describe('Shopping List Class', function(){
 
-  var item = null;
+  var list = null;
 
   beforeEach(function(){
-    item =  new ShoppingList("bread", "wheat");
+    list =  new ShoppingList("bread", "wheat");
 
   });
 
@@ -76,35 +76,44 @@ describe('Shopping List Class', function(){
   });
 
   it('should have a property called "items"', function(){
-    expect(item).to.have.a.property('items');
-    expect(item.items).to.be.an('Array');
+    expect(list).to.have.a.property('items');
+    expect(list.items).to.be.an('Array');
   });
 
   describe('.addItem', function(){
   it('should be a method', function(){
 
-    var item = new ShoppingList();
+    var list = new ShoppingList();
     var bread = new ShoppingListItem("bread", "wheat");
 
-    item.addItem(bread);
+    list.addItem(bread);
 
-    item.items.should.contain(bread);
+    list.items.should.contain(bread);
   });
+
+  it('should throw error if not an instance of Shopping List item',function(){
+    expect(list.addItem).to.throw();
+
+
+
+  });
+
+
   });
 
   describe('.discardItem', function(){
   it('should be a method', function(){
 
-    var item = new ShoppingList();
+    var list = new ShoppingList();
     var bread = new ShoppingListItem("bread", "wheat");
     var avocado = new ShoppingListItem("avocado", "fruit?");
 
-    item.addItem(bread);
-    item.addItem(avocado);
+    list.addItem(bread);
+    list.addItem(avocado);
 
-    item.discardItem(avocado).should.equal(true);
-    item.items.should.contain(bread);
-    item.items.should.not.contain(avocado);
+    list.discardItem(avocado).should.equal(true);
+    list.items.should.contain(bread);
+    list.items.should.not.contain(avocado);
 
   });
 
