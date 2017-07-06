@@ -88,7 +88,7 @@ describe('ShoppingList Class', function(){
   });
   });
 
-  describe('.removeItem', function(){
+  describe('.discardItem', function(){
   it('should be a method', function(){
 
     var item = new ShoppingList();
