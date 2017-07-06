@@ -1,3 +1,5 @@
+// var chai   = require('chai');
+console.log('shopping_list_test loaded!')
 var expect = chai.expect;
 var should = chai.should();
 
