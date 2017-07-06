@@ -81,7 +81,12 @@ describe('Shopping List Class', function(){
   });
 
   describe('.addItem', function(){
-  it('should be a method', function(){
+
+  it('should be a function',function(){
+    expect(list.addItem).to.be.a('function');
+  });
+
+  it('should add item to list', function(){
 
     var list = new ShoppingList();
     var bread = new ShoppingListItem("bread", "wheat");
@@ -92,13 +97,10 @@ describe('Shopping List Class', function(){
   });
 
   it('should throw error if not an instance of Shopping List item',function(){
-    expect(list.addItem).to.throw();
-
-
+    expect(function() {
+      list.addItem('banana');}).to.throw();
 
   });
-
-
   });
 
   describe('.discardItem', function(){
