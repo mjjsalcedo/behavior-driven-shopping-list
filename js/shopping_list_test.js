@@ -1,9 +1,9 @@
-// var chai   = require('chai');
-console.log('shopping_list_test loaded!')
+
+
 var expect = chai.expect;
 var should = chai.should();
 
-describe('ShoppingListItem Class', function(){
+describe('Shopping List Item Class', function(){
 
   var item = null;
 
@@ -33,16 +33,20 @@ describe('ShoppingListItem Class', function(){
 
   describe('.check', function(){
   it('should be a method', function(){
+     expect(item.check).to.be.a('function');
+  });
 
-    var item = new ShoppingListItem("bread", "wheat");
+  it('should equal true', function(){
     expect(item.check()).to.equal(true);
   });
+
 });
 
 describe('.uncheck', function(){
   it('should be a method', function(){
-
-    var item = new ShoppingListItem("bread", "wheat");
+     expect(item.uncheck).to.be.a('function');
+  });
+  it('should equal false', function(){
     expect(item.uncheck()).to.equal(false);
   });
 });
@@ -58,7 +62,7 @@ describe('.render', function(){
 });
 
 
-describe('ShoppingList Class', function(){
+describe('Shopping List Class', function(){
 
   var item = null;
 
