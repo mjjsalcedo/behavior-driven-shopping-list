@@ -1,18 +1,16 @@
-class ShoppingListItem {
+function ShoppingListItem(name, description){
+   this.name = name;
+   this.description = description;
+   this.is_done = false;
 
-    constructor(name, description){
-      this.name = name;
-      this.description = description;
-      this.is_done = false;
-    }
-
-    check(){
+ }
+    ShoppingListItem.prototype.check=function(){
       this.is_done = true;
       return this.is_done;
-    }
+    };
 
-    uncheck(){
+  ShoppingListItem.prototype.uncheck=function(){
       this.is_done = false;
-      return this.is_done;
-    }
-  }
+       return this.is_done;
+
+   };
