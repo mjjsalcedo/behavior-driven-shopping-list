@@ -9,7 +9,6 @@ describe('Shopping List Item Class', function(){
 
   beforeEach(function(){
     list =  new ShoppingListItem("bread", "wheat");
-
   });
 
   it('should be a function', function(){
@@ -31,33 +30,33 @@ describe('Shopping List Item Class', function(){
     expect(list.is_done).to.equal(false);
   });
 
-  describe('.check', function(){
-  it('should be a method', function(){
-     expect(list.check).to.be.a('function');
-  });
+    describe('.check', function(){
+      it('should be a method', function(){
+         expect(list.check).to.be.a('function');
+      });
 
-  it('should equal true', function(){
-    expect(list.check()).to.equal(true);
-  });
+      it('should equal true', function(){
+        expect(list.check()).to.equal(true);
+      });
 
-});
+    });
 
-describe('.uncheck', function(){
-  it('should be a method', function(){
-     expect(list.uncheck).to.be.a('function');
-  });
-  it('should equal false', function(){
-    expect(list.uncheck()).to.equal(false);
-  });
-});
+    describe('.uncheck', function(){
+      it('should be a method', function(){
+         expect(list.uncheck).to.be.a('function');
+      });
+      it('should equal false', function(){
+        expect(list.uncheck()).to.equal(false);
+      });
+    });
 
-describe('.render', function(){
-  it('should be a method', function(){
+    describe('.render', function(){
+      it('should be a method', function(){
 
-    var list = new ShoppingListItem("bread", "wheat");
-    expect(list.render()).to.equal(false);
-  });
-});
+        var list = new ShoppingListItem("bread", "wheat");
+        expect(list.render()).to.equal(false);
+      });
+    });
 
 });
 
@@ -80,45 +79,56 @@ describe('Shopping List Class', function(){
     expect(list.items).to.be.an('Array');
   });
 
-  describe('.addItem', function(){
+    describe('.addItem', function(){
 
-  it('should be a function',function(){
-    expect(list.addItem).to.be.a('function');
-  });
+      it('should be a function',function(){
+        expect(list.addItem).to.be.a('function');
+      });
 
-  it('should add item to list', function(){
+      it('should add item to list', function(){
 
-    var list = new ShoppingList();
-    var bread = new ShoppingListItem("bread", "wheat");
+        var list = new ShoppingList();
+        var bread = new ShoppingListItem("bread", "wheat");
 
-    list.addItem(bread);
+        list.addItem(bread);
 
-    list.items.should.contain(bread);
-  });
+        list.items.should.contain(bread);
+      });
 
-  it('should throw error if not an instance of Shopping List item',function(){
-    expect(function() {
-      list.addItem('banana');}).to.throw();
+      it('should throw error if not an instance of Shopping List item',function(){
+        expect(function() {
+          list.addItem('banana');
+        }).to.throw();
 
-  });
-  });
+      });
+    });
 
-  describe('.discardItem', function(){
-  it('should be a method', function(){
+    describe('.discardItem', function(){
 
-    var list = new ShoppingList();
-    var bread = new ShoppingListItem("bread", "wheat");
-    var avocado = new ShoppingListItem("avocado", "fruit?");
+      it('should be a method', function(){
+        expect(list.discardItem).to.be.a('function');
+      });
 
-    list.addItem(bread);
-    list.addItem(avocado);
+      it('should throw error if not an instance of Shopping List Item', function(){
+        expect(function() {
+          list.discardItem('potato');
+        }).to.throw();
+      });
 
-    list.discardItem(avocado).should.equal(true);
-    list.items.should.contain(bread);
-    list.items.should.not.contain(avocado);
 
-  });
+      it('should remove Shopping List Item from Shopping List', function(){
 
-});
+        var list = new ShoppingList();
+        var bread = new ShoppingListItem("bread", "wheat");
+        var avocado = new ShoppingListItem("avocado", "fruit?");
+
+        list.addItem(bread);
+        list.addItem(avocado);
+
+        list.discardItem(avocado).should.equal(true);
+        list.items.should.contain(bread);
+        list.items.should.not.contain(avocado);
+      });
+    });
 });
 
