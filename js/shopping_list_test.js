@@ -53,9 +53,14 @@ describe('Shopping List Item Class', function(){
     describe('.render', function(){
       it('should be a method', function(){
 
-        var list = new ShoppingListItem("bread", "wheat");
-        expect(list.render()).to.equal(false);
+      expect(list.render).to.be.a('function');
       });
+
+      it('should have an li element', function(){
+
+      expect(document.querySelector('#mocha')).to.contain('li');
+      });
+
     });
 
 });
