@@ -95,7 +95,7 @@ describe('Shopping List Class', function(){
         list.items.should.contain(bread);
       });
 
-      it('should throw error if not an instance of Shopping List item',function(){
+      it('should throw error if not an instance of Shopping List Item',function(){
         expect(function() {
           list.addItem('banana');
         }).to.throw();
@@ -103,18 +103,31 @@ describe('Shopping List Class', function(){
       });
     });
 
-    describe('.discardItem', function(){
+    describe('.removeItem', function(){
+
+      var cucumber = new ShoppingListItem("cucumber","green");
 
       it('should be a method', function(){
-        expect(list.discardItem).to.be.a('function');
+        expect(list.removeItem).to.be.a('function');
       });
 
       it('should throw error if not an instance of Shopping List Item', function(){
         expect(function() {
-          list.discardItem('potato');
+          list.removeItem('potato');
         }).to.throw();
       });
 
+      it('should remove last item in Shopping List',function(){
+        var list = new ShoppingList();
+        var bread = new ShoppingListItem("bread", "wheat");
+        var avocado = new ShoppingListItem("avocado", "fruit?");
+
+        list.addItem(bread);
+        list.addItem(avocado);
+
+        list.removeItem();
+        expect(list.items).to.deep.equal([bread]);
+      });
 
       it('should remove Shopping List Item from Shopping List', function(){
 
@@ -125,7 +138,7 @@ describe('Shopping List Class', function(){
         list.addItem(bread);
         list.addItem(avocado);
 
-        list.discardItem(avocado).should.equal(true);
+        list.removeItem(avocado).should.equal(true);
         list.items.should.contain(bread);
         list.items.should.not.contain(avocado);
       });
