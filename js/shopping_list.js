@@ -28,14 +28,19 @@ ShoppingList.prototype.removeItem = function(item){
         }
 };
 
+ShoppingList.prototype.render = function(item){
+  var pack = this.items;
+  var makeUl = document.createElement("ul");
 
+  if(pack.length === 0){
+    throw new Error ("No item is in the Shopping List");
+  } else {
 
+    for (var i = 0; i < pack.length; i++) {
+      var test = pack[i].render();
+      makeUl.appendChild(test);
 
-
-
-  //   removeItem(item){
-  //   var index = this.items.indexOf(item);
-  //   this.items.splice(index, 1);
-  //     return true;
-  //   }
-  // }
+    }
+  }
+  return makeUl;
+};

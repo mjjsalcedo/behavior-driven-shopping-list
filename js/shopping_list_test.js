@@ -84,10 +84,7 @@ describe('Shopping List Class', function(){
 
   var list = null;
 
-  beforeEach(function(){
-    list =  new ShoppingList("bread", "wheat");
-
-  });
+  list = new ShoppingList();
 
   it('should be a function', function(){
     expect(ShoppingList).to.be.a('function');
@@ -162,5 +159,50 @@ describe('Shopping List Class', function(){
         list.items.should.not.contain(avocado);
       });
     });
+
+    describe('.render', function(){
+      it('should be a method', function(){
+        expect(list.render).to.be.a('function');
+      });
+
+      it('should return a message if there is nothing in the Shopping List', function(){
+
+        var list = new ShoppingList();
+
+        expect(function() {
+          list.render();
+        }).to.throw();
+      });
+
+      it('should return all items in the Shopping List',function(){
+
+        var list = new ShoppingList();
+        var bread = new ShoppingListItem("bread", "wheat");
+        var avocado = new ShoppingListItem("avocado", "fruit?");
+
+        list.addItem(bread);
+        list.addItem(avocado);
+
+
+        list.render();
+        var newItem = list.render();
+        var testUl = newItem.querySelectorAll('li');
+        var testLi = newItem.querySelectorAll('span');
+
+        console.log("render!", list.render());
+        console.log(testUl);
+        expect(testUl).to.have.length(2);
+        expect(testLi[0].innerText).to.equal('bread');
+
+      });
+    });
 });
 
+
+
+     /* it('should have a span for item name', function(){
+        var newItem = item.render();
+        var testItem = newItem.querySelectorAll('span');
+         expect(testItem[0].innerText).to.equal('bread');
+      });
+*/
