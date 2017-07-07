@@ -51,20 +51,28 @@ describe('Shopping List Item Class', function(){
     });
 
     describe('.render', function(){
-      /*let newItem = item.render();*/
+
 
       it('should be a method', function(){
         expect(item.render).to.be.a('function');
       });
 
-      it.skip('should have an li element', function(){
-        expect(querySelectorAll('li')).to.exist;
+      it('should have an li element', function(){
+        var newItem = item.render();
+        var testItem = newItem.querySelectorAll('span');
+        expect(testItem).to.have.length(2);
       });
 
-      it('should have a span for item name and description', function(){
+      it('should have a span for item name', function(){
+        var newItem = item.render();
+        var testItem = newItem.querySelectorAll('span');
+         expect(testItem[0].innerText).to.equal('bread');
+      });
 
-         var spans = querySelectorAll('span');
-         expect(spans.innerHTML).to.equal('wheat');
+      it('should have a span for item description', function(){
+        var newItem = item.render();
+        var testItem = newItem.querySelectorAll('span');
+         expect(testItem[1].innerText).to.equal('wheat');
       });
 
     });
