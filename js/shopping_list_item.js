@@ -11,24 +11,24 @@ function ShoppingListItem(name, description){
 
   ShoppingListItem.prototype.uncheck =function(){
       this.is_done = false;
-       return this.is_done;
-
+      return this.is_done;
    };
 
   ShoppingListItem.prototype.render = function(){
 
       var newLi = document.createElement("li");
-      item.className = this.is_done;
-      document.querySelector("#mocha").appendChild(newli);
+      newLi.className = "completed_" + this.is_done;
 
       var nameSpan = document.createElement("span");
       nameSpan.innerHTML = this.name;
       newLi.appendChild(nameSpan);
 
-
       var descriptionSpan = document.createElement("span");
       descriptionSpan.innerHTML = this.description;
       newLi.appendChild(descriptionSpan);
 
+      return newLi;
   };
+
+
 

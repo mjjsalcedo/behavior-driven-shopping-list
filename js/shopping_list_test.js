@@ -5,10 +5,10 @@ var should = chai.should();
 
 describe('Shopping List Item Class', function(){
 
-  var list = null;
+  var item = null;
 
   beforeEach(function(){
-    list =  new ShoppingListItem("bread", "wheat");
+    item =  new ShoppingListItem("bread", "wheat");
   });
 
   it('should be a function', function(){
@@ -16,49 +16,55 @@ describe('Shopping List Item Class', function(){
   });
 
   it('should have a property called "name"', function(){
-    expect(list).to.have.a.property('name');
-    expect(list.name).to.be.a('String');
+    expect(item).to.have.a.property('name');
+    expect(item.name).to.be.a('String');
   });
 
   it('should have a property called "description"', function(){
-    expect(list).to.have.a.property('description');
-    expect(list.description).to.be.a('String');
+    expect(item).to.have.a.property('description');
+    expect(item.description).to.be.a('String');
   });
 
   it('should have a property "is_done"', function(){
-    expect(list).to.have.a.property('is_done');
-    expect(list.is_done).to.equal(false);
+    expect(item).to.have.a.property('is_done');
+    expect(item.is_done).to.equal(false);
   });
 
     describe('.check', function(){
       it('should be a method', function(){
-         expect(list.check).to.be.a('function');
+         expect(item.check).to.be.a('function');
       });
 
       it('should equal true', function(){
-        expect(list.check()).to.equal(true);
+        expect(item.check()).to.equal(true);
       });
 
     });
 
     describe('.uncheck', function(){
       it('should be a method', function(){
-         expect(list.uncheck).to.be.a('function');
+         expect(item.uncheck).to.be.a('function');
       });
       it('should equal false', function(){
-        expect(list.uncheck()).to.equal(false);
+        expect(item.uncheck()).to.equal(false);
       });
     });
 
     describe('.render', function(){
-      it('should be a method', function(){
+      /*let newItem = item.render();*/
 
-      expect(list.render).to.be.a('function');
+      it('should be a method', function(){
+        expect(item.render).to.be.a('function');
       });
 
-      it('should have an li element', function(){
+      it.skip('should have an li element', function(){
+        expect(querySelectorAll('li')).to.exist;
+      });
 
-      expect(document.querySelector('#mocha')).to.contain('li');
+      it('should have a span for item name and description', function(){
+
+         var spans = querySelectorAll('span');
+         expect(spans.innerHTML).to.equal('wheat');
       });
 
     });
